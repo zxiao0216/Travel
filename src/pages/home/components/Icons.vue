@@ -49,10 +49,6 @@ export default {
                 id:'0008',
                 imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
                 desc:'一日游'
-            },{
-                id:'0009',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-                desc:'西安必游'
             }]
         }
     },
@@ -73,6 +69,7 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+// 下边这两个就是自己定义的类似于C语言中宏定义的东西，在这里进行引入
     @import '~styles/varibles.styl';
     @import '~styles/mixins.styl';
     .icons >>> .swpier-container
@@ -80,37 +77,39 @@ export default {
         heigh :0
         // 最外层div取高度为50%
         padding-bottom :50%
-    .icon   
-        position :relative
-        float :left
-        height :0
-        // 下边两个代码的意思是 width=25%，height=25%
-        width:25%
-        padding-bottom :25%
-        .icon-img
-            position:absolute
-            top : 0
-            left : 0
-            right : 0
-            bottom :.44rem
-            box-sizing :border-box
-            padding :.1rem 
-            .icon-img-content
-                height : 100%
-                display :block
-                margin : 0 auto 
-        .icon-desc
-            position:absolute
-            bottom : 0
-            left : 0
-            right : 0
-            height :.44rem
-            line-height :.44rem
-            color:$darkTextColor
-            text-align :center
+    .icons
+        margin-top :.1rem
+        .icon   
+            position :relative
+            float :left
+            height :0
+            // 下边两个代码的意思是 width=25%，height=25%
+            width:25%
+            padding-bottom :25%
+            .icon-img
+                position:absolute
+                top : 0
+                left : 0
+                right : 0
+                bottom :.44rem
+                box-sizing :border-box
+                padding :.1rem 
+                .icon-img-content
+                    height : 100%
+                    display :block
+                    margin : 0 auto 
+            .icon-desc
+                position:absolute
+                bottom : 0
+                left : 0
+                right : 0
+                height :.44rem
+                line-height :.44rem
+                color:$darkTextColor
+                text-align :center
 
-            //当描述太多的时候，显示...
-            ellipsis()
+                //当描述太多的时候，显示... 此时就可以使用相当于C语言中的宏定义的东西，新建一个文件，只存放有可能有用到的重复的东西
+                ellipsis()
 
 </style>
 
