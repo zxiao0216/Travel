@@ -5,13 +5,18 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import fastClick from 'fastclick'  //单击事件 300ms点击事件延迟问题的解决方法，在项目中安装 npm install fastclick --save,并将fastclick添加在body中。
+import VueAwesomeSwiper from 'vue-awesome-swiper' //轮播图的引入  首先进行安装 npm install vue-awesome-swiper@2.6.7 --save，指定版本的安装
 import 'styles/reset.css' // 重置默认css样式
 import 'styles/border.css'// 1像素边框问题，
 import 'styles/iconfont.css'
+// require styles
+import 'swiper/dist/css/swiper.css'
+
 
 Vue.config.productionTip = false
 
 fastClick.attach(document.body)//将fastclick添加在body中
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 /* eslint-disable no-new */
 new Vue({
