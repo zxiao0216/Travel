@@ -1,10 +1,10 @@
 <template>
     <div class="icons">
-         <swiper>
+         <swiper :options="swiperOption">
                 <swiper-slide v-for="(page,index) of pages" :key="index">
                     <div class="icon" v-for="item of page" :key="item.id">
                         <div class="icon-img">
-                            <img class="icon-img-content" :src="item.imgUrl" alt="">         
+                            <img class="icon-img-content" :src="item.imgUrl">         
                         </div>    
                         <p class="icon-desc">{{item.desc}}</p>        
                     </div>
@@ -15,47 +15,21 @@
 <script>
 export default {
     name:'HomeIcons',
+    props:{
+        list:Array
+    },
     data (){
         return{
-            iconList:[{
-                id:'0001',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'景点门票'
-            },{
-                id:'0002',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'文化古迹'
-            },{
-                id:'0003',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png',
-                desc:'演出'
-            },{
-                id:'0004',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-                desc:'一日游'
-            },{
-                id:'0005',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'景点门票'
-            },{
-                id:'0006',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-                desc:'文化古迹'
-            },{
-                id:'0007',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png',
-                desc:'演出'
-            },{
-                id:'0008',
-                imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-                desc:'一日游'
-            }]
+            // 设置将图标这里的轮播默认的关闭，只能手动的进行划
+            swiperOption:{
+                autoplay:false
+            }
         }
     },
     computed:{
         pages (){
             const pages = []
-            this.iconList.forEach((item,index) => {
+            this.list.forEach((item,index) => {
                 // 对展示的图标进行翻页操作，一页显示八个。进行计算。
                 const page = Math.floor(index / 8);
                 if(!pages[page]){
@@ -91,7 +65,7 @@ export default {
                 top : 0
                 left : 0
                 right : 0
-                bottom :.44rem
+                bottom :.57rem
                 box-sizing :border-box
                 padding :.1rem 
                 .icon-img-content

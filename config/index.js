@@ -10,7 +10,16 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+
+    // 通过将ajax请求地址隐藏的形式，将真正的地址隐藏，只暴露/api/index.json地址.这个被称为vue帮我们做的开发环境的转换，其实质是webpack中的dev帮我们做的。
+    proxyTable: {
+      '/api':{
+        target:'htpp://localhost:8080',
+        pathRewrite:{
+          '^/api':'/static/mock'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
