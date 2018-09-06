@@ -2,7 +2,13 @@
     <div>
         <div class="title">热销推荐</div>
         <ul >
-            <li class="item border-bottom" v-for="item of list" :key="item.id">
+            <router-link 
+                tag="li"
+                class="item border-bottom" 
+                v-for="item of list" 
+                :key="item.id"
+                :to="'/detail/' + item.id "
+            >
                 <!-- 使用v-for循环显示data中数据时，在img的src绑定时，一定要加上：冒号，不然vue以为后边的值为字符串，而不是js代码 -->
                 <img class="item-img" :src="item.imgUrl" alt="">
                 <div class="item-info">
@@ -10,7 +16,7 @@
                     <p class="item-desc">{{item.desc}}</p>
                     <button class="item-button">查看详情</button>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div>
     
