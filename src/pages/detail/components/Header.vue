@@ -50,7 +50,12 @@ export default {
         }
     },
     activated(){
+        // 绑定在windows全局上，从而影响整个页面.页面展示的时候绑定scroll事件
         window.addEventListener('scroll',this.handleScroll)
+    },
+    // 隐藏的时候再解绑scroll事件
+    deactivated(){
+         window.removeEventListener('scroll',this.handleScroll)
     }
 }
 </script>
