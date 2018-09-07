@@ -19,7 +19,7 @@ export default {
         imgs:{
             type:Array,
             default(){
-                return[]
+                return []
             }
         }
     },

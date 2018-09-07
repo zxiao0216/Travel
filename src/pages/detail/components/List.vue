@@ -20,7 +20,7 @@
 <script>
 
 export default {
-    // name的命名很大一部分还是为了能够 使用到递归调用。
+    // name的命名1.是为了能够 使用到递归调用;2.去下缓存的时候使用；标签的名字
     name:'DetailList',
     props:{
         list:Array
