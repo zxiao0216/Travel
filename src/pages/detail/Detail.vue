@@ -5,7 +5,7 @@
                     :bannerImg="bannerImg"
                     :bannerImgs="gallaryImgs"
         ></detail-banner>
-        <detail-header></detail-header>
+        <detail-header>dsfdsf</detail-header>
         <div class="content">
             <detail-list :list="list"></detail-list>
         </div>
@@ -17,6 +17,7 @@ import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
 import DetailList from './components/List'
 import axios from 'axios'
+import {mapState} from 'vuex'
 
 export default {
     name:'Detail',
@@ -27,6 +28,7 @@ export default {
     },
     data(){
         return{
+            lastId:'',
             sightName:'',
             bannerImg:'',
             gallaryImgs:[],
@@ -35,11 +37,15 @@ export default {
     },
     methods:{
         getDetailInfo(){
-            axios.get('/api/detail.json',{
+            // 这两种方式都可以用来调用接口
+            // axios.get('/api/detail.json?id=' + this.$route.params.id ).then(this.handleGetDataSucc)
+
+              axios.get('/api/detail.json',{
                 params:{
                     id:this.$route.params.id
                 }
-            }).then(this.handleGetDataSucc)
+            }
+            ).then(this.handleGetDataSucc)
         },
         handleGetDataSucc(res){
             res = res.data
@@ -52,10 +58,19 @@ export default {
             }
         }
     },
-    mounted(){
+    mounted(){  
+        this.lastId = this.$route.params.id
         this.getDetailInfo()
     },
-    
+    computed:{
+        ...mapState(['id'])
+    },
+    activated(){
+        if(this.lastId !== this.$route.params.id){
+            this.lastId = this.$route.params.id
+            this.getDetailInfo()
+        }
+    }
 }
 </script>
 
