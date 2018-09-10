@@ -14,7 +14,8 @@ module.exports = {
     // 通过将ajax请求地址隐藏的形式，将真正的地址隐藏，只暴露/api/index.json地址.这个被称为vue帮我们做的开发环境的转换，其实质是webpack中的dev帮我们做的。
     proxyTable: {
       '/api':{
-        target:'htpp://localhost:8080',
+        // 下边的地址为前端自己的模拟接口，如果使后端，则此处的地址写的是后端的地址。
+        target:'http://localhost:8080',
         pathRewrite:{
           '^/api':'/static/mock'
         }
@@ -60,6 +61,16 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+
+    // proxyTable: {
+    //   '/api':{
+    //     // 下边的地址为前端自己的模拟接口，如果使后端，则此处的地址写的是后端的地址。
+    //     target:'http://labguo.com',
+    //     pathRewrite:{
+    //       '^/api':'/static/mock'
+    //     }
+    //   }
+    // },
 
     /**
      * Source Maps

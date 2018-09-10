@@ -10,6 +10,7 @@ import store from './store'
 import 'styles/reset.css' // 重置默认css样式
 import 'styles/border.css'// 1像素边框问题，
 import 'styles/iconfont.css'
+import 'babel-polyfill'
 // require styles
 import 'swiper/dist/css/swiper.css'
 
