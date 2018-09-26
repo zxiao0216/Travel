@@ -1,3 +1,4 @@
+<!-- 省市选择页面 -->
 <template>
     <div>
         <city-header></city-header>

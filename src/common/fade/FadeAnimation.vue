@@ -6,6 +6,7 @@
 
 <script>
 // 单文件组件的编写形式
+//渐变动画组件
 export default {
   name: 'FadeAnimation'
 }
